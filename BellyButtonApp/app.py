@@ -17,8 +17,8 @@ app = Flask(__name__)
 #################################################
 # Database Setup
 #################################################
-
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL', '')
+app.config["SQLALCHEMY_TRACK_MODIFICATION"] = False
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/bellybutton.sqlite"
 db = SQLAlchemy(app)
 
 # reflect an existing database into a new model
@@ -98,6 +98,7 @@ def samples(sample):
 
     return jsonify(data)
 
+
 @app.route("/wfreq/<sample>")
 def wfreq(sample):
     selection = [
@@ -116,9 +117,6 @@ def wfreq(sample):
     return jsonify(sample_wfreq)
 
 
-
-if __name__ == "__main__":
-    app.run()
 
 if __name__ == "__main__":
     app.run()
