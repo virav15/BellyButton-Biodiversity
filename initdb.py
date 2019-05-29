@@ -1,2 +1,2 @@
-from Interactive-Visualization-BellyButton-Biodiversity.app import db
+from BellyButtonApp.app import db
 db.create_all()
